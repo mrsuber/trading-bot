@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  api:
+    build: ./api
+    ports:
+      - "3000:3000"
+  data_processing:
+    build: ./data-processing
+    depends_on:
+      - api
+      - db
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
